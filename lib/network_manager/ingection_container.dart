@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_dio_example/utils/print_value.dart';
 
 Dio getDio() {
@@ -25,6 +26,7 @@ Dio getDio() {
         printValue(tag: "STATUS CODE  :", '${e.response?.statusCode ?? 0}');
         printValue(tag: "ERROR DATA  :", '${e.response?.data ?? ""}');
         printValue(tag: "ERROR MESSAGE  :", '${e.message}');
+
         return handler.next(e);
       },
     ),
