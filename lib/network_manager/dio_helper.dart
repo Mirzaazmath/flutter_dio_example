@@ -1,8 +1,9 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_dio_example/network_manager/ingection_container.dart';
 
 class DioHelper {
   // Created dio instance
-  Dio dio = Dio();
+  Dio dio = getDio();
 
   // Created Options for Dio
   Options options = Options(
