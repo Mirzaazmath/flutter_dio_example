@@ -121,4 +121,31 @@ class DioHelper {
       return null;
     }
   }
+  // Create a method for delete api call  with parameters like url and bool value to add token and requestBody
+  Future<dynamic> delete({
+    required String url,
+    Object? requestBody,
+    bool isAuthRequired = false,
+  }) async {
+    //  isAuthRequired == true
+    if (isAuthRequired) {
+      // we are adding headers with token
+      options.headers = headers;
+    }
+    try {
+      Response response;
+      if (requestBody == null) {
+        // here we are calling the api with no request body
+        response = await dio.delete(url, options: options);
+      } else {
+        // here we are calling the api with request body
+        response = await dio.delete(url, options: options, data: requestBody);
+      }
+
+      return response.data;
+    } catch (error) {
+      // here we are catching the error
+      return null;
+    }
+  }
 }
